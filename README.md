@@ -18,4 +18,8 @@ fastapi, jinja2, sqlalchemy, mariadb, docker, docker-compose, aws, langchain, ap
     - http 프로토콜 제공하는 함수(get, post, put, delete)
     - http://127.0.0.1:8000/member?id=abc1234 -> 쿼리스트링(get 방식)
     - 숨겨야하는 정보들(post 방식)
-    
+
+
+### 카카오 나에게 톡 보내기
+- 인증코드 URL(Base): https://kauth.kakao.com/oauth/authorize?client_id={REST%20API%20%ED%82%A4}&redirect_uri={Redirect URI}&response_type=code&scope=talk_message
+- 인증코드 URL(Me): https://kauth.kakao.com/oauth/authorize?client_id=6e12e1aade94d00919a0b270704ec890&redirect_uri=http://127.0.0.1:8000&response_type=code&scope=talk_message
