@@ -7,9 +7,9 @@
     <!-- fontawesome -->
     <script src="https://kit.fontawesome.com/cae644f837.js" crossorigin="anonymous"></script>
     <!-- css -->
-    <link rel="stylesheet" type="text/css" href="css/common.css"> <!-- 상대경로 사용, 절대경로xxx-->
-    <link rel="stylesheet" type="text/css" href="css/design.css">
-    <link rel="stylesheet" type="text/css" href="css/animation.css">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', path='/css/common.css')}}"> <!-- 상대경로 사용, 절대경로xxx-->
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', path='/css/design.css')}}">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', path='/css/animation.css')}}">
 </head>
 <body>
     <div class="wrap">
