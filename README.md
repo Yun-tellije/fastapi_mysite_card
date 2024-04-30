@@ -1,6 +1,11 @@
 # fastapi_mysite_card
 fastapi, jinja2, sqlalchemy, mariadb, docker, docker-compose, aws, langchain, apscheduler, uvicorn, requests
 
+> pip install -r requirements.txt
+  - requirements.txt에 적힌거 한번에 설치
+
+> pip freeze > requirements.txt
+  - 지금까지 설치한 라이브러리를 포함해서 requirements.txt 생성
 
 #### 라이브러리 설명
 1. fastapi: 웹 프레임워크 + API
@@ -11,14 +16,29 @@ fastapi, jinja2, sqlalchemy, mariadb, docker, docker-compose, aws, langchain, ap
 ### Web 프로그래밍 기초 설명
 
 #### 1. URL
-    - http://127.0.0.1:8000 = http://localhost:8000
-    - 127.0.0.1과 localhost는 루프백 주소(현재 디바이스의 IP를 의미)
-    - http -> 프로토콜
-    - 8000 -> Port 번호
-    - http 프로토콜 제공하는 함수(get, post, put, delete)
-    - http://127.0.0.1:8000/member?id=abc1234 -> 쿼리스트링(get 방식)
-    - 숨겨야하는 정보들(post 방식)
+  - http://127.0.0.1:8000 = http://localhost:8000
+  - 127.0.0.1과 localhost는 루프백 주소(현재 디바이스의 IP를 의미)
+  - http -> 프로토콜
+  - 8000 -> Port 번호
+  - http 프로토콜 제공하는 함수(get, post, put, delete)
+  - http://127.0.0.1:8000/member?id=abc1234 -> 쿼리스트링(get 방식)
+  - 숨겨야하는 정보들(post 방식)
 
+#### 2. DAO and DTO(VO)
+  - DAO(Data Access Object): CRUD 할 때 사용
+    + Create: INSERT
+    + Read:   SELECT
+    + Update: UPDATE
+    + Delete: DELETE
+  - DTO(Data Transfer Object): 데이터를 전달할 때 사용
+
+#### 3. 유효성(Validation) 체크
+  - 유효성체크는 사용자의 값이 올바른 값인지 체크
+    + 예: 이메일(이메일 형식인지?)
+  - 역사
+    1. 유효성체크: 서버 → 과부하
+    2.            클라이언트(웹브라우저) → JS (지금도 사용중)
+    3.            서버 추가 → 더블 체크(pydantic)
 
 ### 카카오 나에게 톡 보내기
 - 인증코드 URL(Base): https://kauth.kakao.com/oauth/authorize?client_id={REST%20API%20%ED%82%A4}&redirect_uri={Redirect URI}&response_type=code&scope=talk_message

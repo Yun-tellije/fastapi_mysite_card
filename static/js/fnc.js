@@ -38,7 +38,27 @@ function close_kakao() {
 
 /** FUNCTION **/
 function sendKakao() {
-    
+    msg = {
+        "name": document.querySelector("#kakao_name").value,
+        "email": document.querySelector("#kakao_email").value,
+        "message": document.querySelector("#kakao_message").value
+    }
+
+    // 동기: 페이지가 처음부터 랜더링 -> Default
+    // 비동기: 현재 그대로 유지한 상태로 원하는 값만 변경 -> Ajax
+    $.ajax({
+        url: "/kakao/", // http://127.0.0.1:8000/kakao/
+        data: JSON.stringify(msg),
+        type: "POST",
+        contentType: "application/json; charset=UTF-8",
+        dataType: "JSON",
+        success: function(data) {
+            
+        },
+        error: function(data) {
+            console.log(data);
+        }
+    });
 }
 
 
