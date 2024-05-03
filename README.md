@@ -40,6 +40,25 @@ fastapi, jinja2, sqlalchemy, mariadb, docker, docker-compose, aws, langchain, ap
     2.            클라이언트(웹브라우저) → JS (지금도 사용중)
     3.            서버 추가 → 더블 체크(pydantic)
 
+#### 4. 웹 동작 과정 PROCESS
+  - 정의: Client(=Web browser), Server(회사)
+  - 동작: Client → request → Server → response → Client
+  - 동작(심화): View단(Client) → Controller단(main, router) → Service단 → Model단(DB)
+    + View단: 사용자에게 보여지는 화면
+    + Controller단: 사용자가 요청한 URL과 데이터(유효성 체크)를 전달받고 일을 분배하는 곳
+    + Service단: 실제 기능구현
+    + Model단: DB관련 된 기능 구현(DAO)
+
+   1. Client에서 form 또는 ajax 등을 사용해서 request(+data)  # fnc.js의 $.ajax
+    - URL: http://127.0.0.1:8000/kakao/
+    - method: POST
+    - data: json
+   2. Server의 main.py에서 요청을 받기 → 해당 라우터로 전달
+   3. Server의 해당 Router(kakao)에서 request와 data를 받음
+    - pydantic을 활용한 data validation check(유효성 검증) → data
+   4. Server의 Service단으로 request와 data를 전달
+
+
 ### 카카오 나에게 톡 보내기
 - 인증코드 URL(Base): https://kauth.kakao.com/oauth/authorize?client_id={REST%20API%20%ED%82%A4}&redirect_uri={Redirect URI}&response_type=code&scope=talk_message
 - 인증코드 URL(Me): https://kauth.kakao.com/oauth/authorize?client_id=6e12e1aade94d00919a0b270704ec890&redirect_uri=http://127.0.0.1:8000&response_type=code&scope=talk_message
