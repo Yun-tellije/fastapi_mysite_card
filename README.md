@@ -58,6 +58,11 @@ fastapi, jinja2, sqlalchemy, mariadb, docker, docker-compose, aws, langchain, ap
     - pydantic을 활용한 data validation check(유효성 검증) → data
    4. Server의 Service단으로 request와 data를 전달
 
+#### 5. Web과 DB
+- Web에서 DB를 사용하는 2가지 방법(SQL 매핑, ORM)
+- SQL 매핑: web 서버 -> DB 커넥션 -> SQL 작성 -> DB에서 SQL 실행 -> Web 서버 결과 받기
+- ORM: DB의 테이블 객체화 시켜서 사용하는 방법(최신), SQL 사용 안함, 확장성 및 유지보수 등이 용이
+  + Web 서버 -> DB 커넥션 -> ORM(객체화) -> ORM 사용 -> Web서버 결과 받기
 
 ### 카카오 나에게 톡 보내기
 - 인증코드 URL(Base): https://kauth.kakao.com/oauth/authorize?client_id={REST%20API%20%ED%82%A4}&redirect_uri={Redirect URI}&response_type=code&scope=talk_message
