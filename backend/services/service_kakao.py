@@ -1,5 +1,7 @@
 from dotenv import load_dotenv, find_dotenv
 from backend.schemas.message import MessageDTO
+from backend.crud.crud_message import create_message
+from sqlalchemy.orm import Session
 import os
 import requests
 import json
@@ -70,7 +72,7 @@ class KakaoService():
         return tokens
     
     # 나에게 카카오톡 보내기
-    def send_message(self, msg: MessageDTO):
+    def send_message(self, msg: MessageDTO, db: Session):
         
         # 1. 토큰 유무 체크
         if os.path.isfile("./kakao_code.json"):
@@ -106,7 +108,7 @@ class KakaoService():
         msg_data = {
             "template_object": json.dumps({
                 "object_type": "text",
-                "text": f"이름: {msg_name} \n 메일: {msg.email} \n 메세지: {msg.message}",
+                "text": f"이름: {msg.name} \n 메일: {msg.email} \n 메세지: {msg.message}",
                 "link": {"mobile_web_url": "https://127.0.0.1:8000"}
             })
         }
@@ -116,3 +118,6 @@ class KakaoService():
             print("메세지를 성공적으로 보냈습니다")
         else: 
             print("메세지를 보내는데 실패했습니다. Error: " + str(response.json()))
+            
+        # DB에 저장(사용자의 메시지)
+        create_message(msg, db)
