@@ -8,6 +8,7 @@ from fastapi.templating import Jinja2Templates
 from fastapi.staticfiles import StaticFiles
 from backend.routes import kakao
 from backend.services.service_kakao import KakaoService
+from apscheduler.schedulers.background import BackgroundScheduler
 
 app = FastAPI()
 templates = Jinja2Templates(directory="templates/")
