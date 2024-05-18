@@ -6,3 +6,4 @@ dotenv
 python-dotenv
 sqlalchemy
 pymysql
+apscheduler

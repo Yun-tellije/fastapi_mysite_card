@@ -53,7 +53,10 @@ function sendKakao() {
         contentType: "application/json; charset=UTF-8",
         dataType: "JSON",
         success: function(data) {
-            
+            document.querySelector("#kakao_form").reset()
+            document.querySelector("#kakao_wrap").style.display = "none";
+            document.querySelector(".kakao_close_btn").style.display = "none";
+            document.querySelector(".kakao_btn").style.display = "flex";
         },
         error: function(data) {
             console.log(data);
