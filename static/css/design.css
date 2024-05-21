@@ -240,72 +240,72 @@
 
 /* Kakao */
 .kakao_box {
-	background-color: white;
+    background-color: white;
 }
 #kakao_msg_box {
-	height: auto;
+    height: auto;
 }
 .kakao_msg_info {
-	font-size: 1.5rem;
+    font-size: 1.5rem;
 }
 .kakao_input_area {
-	display: flex;
-	flex-direction: column;
-	gap: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
 }
 .kakao_input_box {
-	border: 1px solid #2d2f31;
-	display: flex;
-	align-items: center;
-	position: relative;
+    border: 1px solid #2d2f31;
+    display: flex;
+    align-items: center;
+    position: relative;
 }
 .kakao_input {
-	width: 100%;
-	border: 0!important;
-	box-shadow: none!important;
-	outline: 0!important;
-	height: 6rem!important;
-	padding: 2rem 1.6rem 0;
-	transition: opacity 100ms linear;
-	font-size: 1.6rem;
-	opacity: 0;
+    width: 100%;
+    border: 0!important;
+    box-shadow: none!important;
+    outline: 0!important;
+    height: 6rem!important;
+    padding: 2rem 1.6rem 0;
+    transition: opacity 100ms linear;
+    font-size: 1.6rem;
+    opacity: 0;
 
 }
 .kakao_input_label {
-	width: 95%;
-	z-index: 100;
-	font-weight: bold;
-	font-size: 1.6rem;
-	left: .8rem;
-	position: absolute;
-	top: .8rem;
-	border: 1px solid transparent;
-	transform: translateY(1.2rem);
-	transform-origin: top left;
-	transition: all 150ms cubic-bezier(.2,0,.38,.9);
+    width: 95%;
+    z-index: 100;
+    font-weight: bold;
+    font-size: 1.6rem;
+    left: .8rem;
+    position: absolute;
+    top: .8rem;
+    border: 1px solid transparent;
+    transform: translateY(1.2rem);
+    transform-origin: top left;
+    transition: all 150ms cubic-bezier(.2,0,.38,.9);
 }
 
 #send_kakao_btn{
-	font-family: 'Nanum Gothic', sans-serif;
-	width: 100%;
-	text-align: center;
-	height: 4.5rem;
-	font-size: 1.6rem;
-	line-height: 2.4rem;
-	padding-top: 1.2rem;
-	padding-bottom: 1.2rem;
-	font-weight: bold;
-	display: flex;
-	border-radius: 0.4rem;
-	justify-content: center;
-	align-items: center;
-	color: #191919;
-	border: 0;
-	outline: none;
-	background: #FEE500;
-	cursor: pointer;
-	transition: all 0.1s ease;
-	text-align: center;
+    font-family: 'Nanum Gothic', sans-serif;
+    width: 100%;
+    text-align: center;
+    height: 4.5rem;
+    font-size: 1.6rem;
+    line-height: 2.4rem;
+    padding-top: 1.2rem;
+    padding-bottom: 1.2rem;
+    font-weight: bold;
+    display: flex;
+    border-radius: 0.4rem;
+    justify-content: center;
+    align-items: center;
+    color: #191919;
+    border: 0;
+    outline: none;
+    background: #FEE500;
+    cursor: pointer;
+    transition: all 0.1s ease;
+    text-align: center;
 }
 
 /* Chatbot */
@@ -351,10 +351,10 @@
     flex-direction: column;
     gap: 0.3rem;
 }
-.human_msg_box.chat_msg_date {
+.human_msg_box .chat_msg_date {
     text-align: right;
 }
-.human_msg_box.chat_msg_info {
+.human_msg_box .chat_msg_info {
     background-color: #f2e018;
 }
 .chat_msg_date {
@@ -379,7 +379,7 @@
     display: flex;
     height: 4rem;
 }
-.msg_inputinput {
+.msg_input input {
     width: 35rem;
     height: 4rem;
     border: none;
@@ -388,7 +388,7 @@
     color: #2F3138;
     padding-left: 1rem;
 }
-.msg_inputbutton {
+.msg_input button {
     width: 4rem;
     height: 4rem;
     border: none;
@@ -397,13 +397,16 @@
     cursor: pointer;
     color: #2F3138;
 }
-.msg_inputbutton:hover {
+.msg_input button:hover {
     color: #10A37F;
 }
 .msg_input>button>i {
     font-size: 1.6rem;
     color: inherit;
 }
+
+
+
 
 
 
