@@ -8,6 +8,7 @@ __pycache__/
 
 # Distribution / packaging
 .env
+llm/
 kakao_code.json
 venv/
 .Python

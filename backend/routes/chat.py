@@ -10,6 +10,6 @@ router = APIRouter(
 async def send_message(chat: dict) -> dict:
     print(f"전달 받은 챗: {chat}")
     
-    ChatService().send_chat(chat)
+    answer = ChatService().send_chat(chat)
     
-    return {"status": {"code": 200, "message": "success"}}
+    return {"answer": answer}

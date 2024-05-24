@@ -9,6 +9,7 @@ from langchain_text_splitters import RecursiveCharacterTextSplitter
 from langchain.embeddings import CacheBackedEmbeddings
 from langchain.storage import LocalFileStore
 from langchain.prompts import ChatPromptTemplate, MessagesPlaceholder
+from langchain.schema.runnable import RunnablePassthrough
 
 _ = load_dotenv(find_dotenv())
 
@@ -84,7 +85,28 @@ class ChatService:
         def load_memory(_):
             return memory.load_memory_variables({})["chat_history"]
         
+        # 6. Chain 생성하기
+        chain = (
+            {
+                "context": retriever,   # VectorDB로부터 질문과 유사한 값을 검색해서 가져옴
+                "question": RunnablePassthrough(),  # 사용자 질문
+                "chat_history": load_memory         # 대화기록
+            }
+            | prompt
+            | llm
+        ) 
         
+        # 7. Chain 실행하기
+        result = chain.invoke(question)
+
+        memory.save_context(
+            {"input": question},
+            {"output": result.content},
+        )
+
+        print(f">> ChatGPT: {result}")
+        return result.content   # LLM 모델이 생성한 답변            
+    
             
             
             
@@ -96,7 +118,7 @@ class ChatService:
     # 이력서(resume.pdf) → Vector DB에 저장
     def gen_chroma_vector(self):
         # PDF 파일 불러오기
-        loader = PyPDFLoader("./static/downloads/resume.pdf")
+        loader = PyPDFLoader("./static/download/resume.pdf")
         
         # Chunk(block) 단위로 Split(쪼개기)
         text_splitter = RecursiveCharacterTextSplitter(
