@@ -10,6 +10,10 @@ from langchain.schema.runnable import RunnablePassthrough
 
 # PDF 파일 불러오기
 loader = PyPDFLoader("./static/download/resume.pdf")
+docs=loader.load()
+print(docs)
+exit()
+
 
 # Chunk(block) 단위로 Split(쪼개기)
 text_splitter = RecursiveCharacterTextSplitter(

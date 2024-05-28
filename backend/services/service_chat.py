@@ -39,7 +39,7 @@ class ChatService:
         question=chat["question"] # 사용자 질문
         
         # 1. Chroma DB 확인(Vector DB 유무 체크)
-        if not os.path.isdir("./llm/chroma/db"):
+        if not os.path.isdir("./llm/chroma_db"):
             self.gen_chroma_vector() # Vector DB 생성
             
         # 2. Chroma DB 가져오기
