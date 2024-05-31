@@ -1,0 +1,41 @@
+version: "3"
+
+services:
+  fastapi:
+    build: . # 현재 폴더를 의미
+    image: mysite:latest # latest: 최신 버전
+    container_name: mysite
+    ports:
+      - "8000:8000" # host:docker
+    networks:
+      - mysite_network
+    depends_on:
+      - db
+    restart: always # 항상 재시작
+
+  db:
+    image: mariadb
+    container_name: mariadb
+    ports:
+      - "3306:3306"
+    env_file: .env
+    environment:
+      MARIADB_DATABASE:         ${MARIADB_DATABASE}
+      MARIADB_ROOT_PASSWORD:    ${MARIADB_ROOT_PASSWORD}
+      MARIDADB_USER:            ${MARIDADB_USER}
+      MARIADB_PASSWORD:         ${MARIADB_PASSWORD}
+      TZ: Asia/Seoul
+    command: 
+      [
+        "--character-set-server=utf8mb4",
+        "--collation-server=utf8mb4_unicode_ci"
+      ]
+    volumes:
+      - ./database/data:/var/lib/mysql # host:docker
+      - ./backend/db/init.d:/docker-entrypoint-init.d # 환경설정 파일을 바인드마운트
+    networks:
+      - mysite_network
+    restart: always
+    
+networks:
+  mysite_network:
