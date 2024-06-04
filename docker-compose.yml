@@ -32,7 +32,7 @@ services:
       ]
     volumes:
       - ./database/data:/var/lib/mysql # host:docker
-      - ./backend/db/init.d:/docker-entrypoint-init.d # 환경설정 파일을 바인드마운트
+      - ./backend/db/initdb.d:/docker-entrypoint-initdb.d # 환경설정 파일을 바인드마운트
     networks:
       - mysite_network
     restart: always
