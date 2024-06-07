@@ -5,10 +5,13 @@
 import uvicorn
 from fastapi import FastAPI, Request
 from fastapi.templating import Jinja2Templates
-from fastapi.staticfiles import StaticFiles
+from fastapi.staticfiles import StaticFiles 
 from backend.routes import kakao, chat
-from backend.services.service_kakao import KakaoService
 from apscheduler.schedulers.background import BackgroundScheduler
+from backend.services.service_kakao import KakaoService
+from dotenv import load_dotenv, find_dotenv
+
+_ = load_dotenv(find_dotenv())
 
 app = FastAPI()
 templates = Jinja2Templates(directory="templates/")
@@ -31,4 +34,4 @@ if __name__ == "__main__":
     sched.start()
     
     # 웹서버 동작!
-    uvicorn.run("main:app", host="127.0.0.1", port=8000, reload=True)
+    #uvicorn.run("main:app", host="127.0.0.1", port=8000, reload=True)
